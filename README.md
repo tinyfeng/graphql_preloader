@@ -26,7 +26,7 @@ end
 ```
 
 If the query like this:
-```json
+```
 query{
   profile{
     id
