@@ -1,0 +1,1 @@
+require 'optimized_function'
