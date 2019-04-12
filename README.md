@@ -4,7 +4,7 @@ preload ActiveRecord Associations when using graphql and ActiveRecord
 
 ## Install
 
-`gem rgraphql_preload_ar`
+`gem 'rgraphql_preload_ar'`
 
 ## Scene
 
