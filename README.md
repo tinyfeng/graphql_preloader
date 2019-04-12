@@ -6,10 +6,7 @@ preload ActiveRecord Associations when using graphql and ActiveRecord
 
 `gem rgraphql_preload_ar`
 
-
-## How to use
-
-#### Scene
+## Scene
 
 Your original code of resolver might look like this: 
 
@@ -76,7 +73,7 @@ end
 
 You will manually resolve N + 1 problem in every resolver.Worse, even if only one field is used, you need to request all the tables included.
 
-#### Usage
+## Usage
 
 Your Resolver inherits from `OptimizedFunction` instead of `GraphQL::Function`.
 Defining `_call` method instead of `call`
