@@ -57,7 +57,7 @@ query{
 
 It will cause Multi-level nested N + 1 problem.
 
-And you want to resolver it, you can write like this:
+And you want to resolve it, you can write like this:
 
 ```ruby
 class Resolvers::ProfileResolver < OptimizedFunction
