@@ -33,6 +33,7 @@ class OptimizedFunction < GraphQL::Function
     tree.each do |k, v|
       if v.present? && klass.reflect_on_all_associations.map(&:name).include?(k)
         result_tree[k.to_sym] = {}
+        next if klass.reflections[k.to_s].options[:polymorphic]
         _klass = klass.reflections[k.to_s].class_name.constantize
         gen_result_tree _klass, tree[k], result_tree[k.to_sym]
       end
