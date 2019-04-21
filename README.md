@@ -4,7 +4,7 @@ preload ActiveRecord Associations when using graphql and ActiveRecord
 
 ## Install
 
-`gem 'rgraphql_preload_ar'`
+`gem 'graphql_preloader'`
 
 ## Scene
 
@@ -60,7 +60,7 @@ It will cause Multi-level nested N + 1 problem.
 And you want to resolve it, you can write like this:
 
 ```ruby
-class Resolvers::ProfileResolver < OptimizedFunction
+class Resolvers::ProfileResolver < GraphQL::Function
   description 'User profile'
 
   type Types::ProfileType
@@ -75,19 +75,19 @@ You will manually resolve N + 1 problem in every resolver.Worse, even if only on
 
 ## Usage
 
-Your Resolver inherits from `OptimizedFunction` instead of `GraphQL::Function`.
+Your Resolver inherits from `PreloadFunction` instead of `GraphQL::Function`.
 Defining `_call` method instead of `call`
-Using `includes_klass(your_model_name)` instead of your original includes statement.
+Using `included_model(your_model_name)` instead of your original includes statement.
 
 
 ```ruby
-class Resolvers::ProfileResolver < OptimizedFunction
+class Resolvers::ProfileResolver < PreloadFunction
   description 'User profile'
 
   type Types::ProfileType
 
   def _call(_, args, ctx)
-    includes_kclass(User).find(ctx[:current_user].id)
+    included_model(User).find(ctx[:current_user].id)
   end
 end
 ```
