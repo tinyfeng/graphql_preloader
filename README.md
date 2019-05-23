@@ -65,7 +65,7 @@ class Resolvers::ProfileResolver < GraphQL::Function
 
   type Types::ProfileType
 
-  def _call(_, args, ctx)
+  def call(_, args, ctx)
     User.includes([works: [comments: :reply_user, likes: [owner: [works: [likes: :owner]]]]]).find(ctx[:current_user].id)
   end
 end
